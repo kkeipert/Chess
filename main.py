@@ -35,9 +35,15 @@ def main():
                     square_selected = (row, col)
                     player_clicks.append(square_selected)
                 if len(player_clicks) == 2:
-                    pass
+                    row_move1 = list(player_clicks[0])[0]
+                    col_move1 = list(player_clicks[0])[1]
+                    row_move2 = list(player_clicks[1])[0]
+                    col_move2 = list(player_clicks[1])[1]
+                    gs.making_a_move(row_move1, col_move1, row_move2, col_move2)
+                    player_clicks = []
+                    square_selected = ()
 
-                
+                    
         draw_game_state(screen, gs) 
         clock.tick(FPS)       
         py.display.flip()     
@@ -62,6 +68,7 @@ def draw_pieces(screen, board):
             piece = board[row][column]
             if piece != "--":
                 screen.blit(IMAGES[piece], py.Rect(column*SQUARE_SIZE, row*SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
+
 
 if __name__ == "__main__":
     main()
