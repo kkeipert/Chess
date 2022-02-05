@@ -13,3 +13,6 @@ def load_images():
         IMAGES[pis] = py.transform.scale(py.image.load("images/" + pis + ".png"), (SQUARE_SIZE, SQUARE_SIZE))
 
 load_images()
+
+
+##!!! Changing !! 
