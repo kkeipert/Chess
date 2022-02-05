@@ -17,13 +17,30 @@ def main():
     gs = chessEngine.GameState()
     load_images()
     running = True 
+    square_selected = () # Keep track of the last click from the user 
+    player_clicks = [] # Keeps track of player clicks (2 Tupels)
 
     while running: 
         for event in py.event.get():
             if event.type == py.QUIT:
                 running = False
-        draw_game_state(screen, gs)        
-        py.display.flip()      
+            elif event.type == py.MOUSEBUTTONDOWN:  #If click something this condition will be activated 
+                location = py.mouse.get_pos() #(x, y) Location of the mouse 
+                col = location[0] // SQUARE_SIZE
+                row = location[1] // SQUARE_SIZE
+                if square_selected == (row, col):
+                    square_selected = ()
+                    player_clicks = []
+                else:
+                    square_selected = (row, col)
+                    player_clicks.append(square_selected)
+                if len(player_clicks) == 2:
+                    pass
+
+                
+        draw_game_state(screen, gs) 
+        clock.tick(FPS)       
+        py.display.flip()     
         
 
 def draw_game_state(screen, gs):

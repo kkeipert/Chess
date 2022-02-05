@@ -14,5 +14,3 @@ def load_images():
 
 load_images()
 
-
-##!!! Changing !! 
